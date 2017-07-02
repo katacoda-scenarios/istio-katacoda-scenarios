@@ -3,10 +3,6 @@ name: ratings-test-delay
 spec:
   destination: ratings.default.svc.cluster.local
   precedence: 2
-  match:
-    httpHeaders:
-      cookie:
-        regex: "^(.*?;)?(user=jason)(;.*)?$"
   route:
   - tags:
       version: v1

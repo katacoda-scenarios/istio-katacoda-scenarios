@@ -1,0 +1,17 @@
+docker pull openzipkin/zipkin
+docker pull alpine
+docker pull istio/grafana:0.1.6
+docker pull istio/examples-bookinfo-reviews-v3
+docker pull istio/examples-bookinfo-reviews-v2
+docker pull istio/examples-bookinfo-reviews-v1
+docker pull istio/examples-bookinfo-productpage-v1
+docker pull istio/examples-bookinfo-ratings-v1
+docker pull istio/examples-bookinfo-details-v1
+docker pull quay.io/coreos/prometheus:v1.1.1
+docker pull gcr.io/istio-testing/servicegraph
+docker pull istio/mixer:0.1.6
+docker pull istio/istio-ca:0.1.6
+docker pull istio/pilot:0.1.6
+docker pull istio/init:0.1
+docker pull istio/proxy_debug:0.1
+docker pull istio/proxy_debug:0.1.6

@@ -1,7 +1,7 @@
 apiVersion: "config.istio.io/v1alpha2"
 kind: denier
 metadata:
-  name: handler
+  name: denyreviewsv3handler
   namespace: istio-system
 spec:
   status:
@@ -11,10 +11,9 @@ spec:
 apiVersion: "config.istio.io/v1alpha2"
 kind: checknothing
 metadata:
-  name: denyrequest
+  name: denyreviewsv3request
   namespace: istio-system
 spec:
- 
 ---
 apiVersion: "config.istio.io/v1alpha2"
 kind: rule
@@ -22,8 +21,7 @@ metadata:
   name: denyreviewsv3
   namespace: istio-system
 spec:
-  #FIXME match: target.labels["app"]=="productpage" && request.headers["x-user"] == ""
-  match: request.headers["x-user"] == ""
+  match: destination.labels["app"] == "ratings" && source.labels["app"]=="reviews" && source.labels["version"] == "v3"
   actions:
-  - handler: handler.denier.istio-system
-    instances: [ denyrequest.checknothing.istio-system ]
+  - handler: denyreviewsv3handler.denier.istio-system
+    instances: [ denyreviewsv3request.checknothing.istio-system ]

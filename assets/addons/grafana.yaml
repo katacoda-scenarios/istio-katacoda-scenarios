@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: grafana
+  namespace: istio-system
 spec:
   type: LoadBalancer
   externalIPs:
@@ -10,7 +11,7 @@ spec:
   ports:
   - port: 3000
     protocol: TCP
-    name: grafana
+    name: http
   selector:
     app: grafana
 ---
@@ -18,19 +19,20 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: grafana
+  namespace: istio-system
+  annotations:
+    sidecar.istio.io/inject: "false"
 spec:
   replicas: 1
   template:
     metadata:
-      annotations:
-        alpha.istio.io/sidecar: ignore
       labels:
         app: grafana
     spec:
       containers:
       - name: grafana
-        image: docker.io/istio/grafana:0.1.6
-        imagePullPolicy: Always
+        image: docker.io/istio/grafana:0.2.7
+        imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 3000
         env:

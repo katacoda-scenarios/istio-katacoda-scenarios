@@ -1,5 +1,3 @@
-#!/bin/bash
-#
 # Copyright 2017 Istio Authors
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,4 +12,35 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-while true; do curl -s -o /dev/null http://$HELLOWORLD_URL/hello; done
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  labels:
+    app: mongodb
+spec:
+  ports:
+  - port: 27017
+    name: mongo
+  selector:
+    app: mongodb
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mongodb-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mongodb
+        version: v1
+    spec:
+      containers:
+      - name: mongodb 
+        image: istio/examples-bookinfo-mongodb:0.2.3
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 27017
+---

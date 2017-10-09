@@ -1,10 +1,10 @@
 apiVersion: config.istio.io/v1alpha2
 kind: RouteRule
 metadata:
-  name: reviews-test-v2
+  name: ratings-test-delay
 spec:
   destination:
-    name: reviews
+    name: ratings
   precedence: 2
   match:
     request:
@@ -13,4 +13,8 @@ spec:
           regex: "^(.*?;)?(user=jason)(;.*)?$"
   route:
   - labels:
-      version: v2
+      version: v1
+  httpFault:
+    delay:
+      percent: 100
+      fixedDelay: 7s

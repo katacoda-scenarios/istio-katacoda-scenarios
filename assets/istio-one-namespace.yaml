@@ -1076,7 +1076,7 @@ spec:
       - name: discovery
         image: docker.io/istio/pilot:0.2.7
         imagePullPolicy: IfNotPresent
-        args: ["discovery", "-v", "2", "--admission-service", "istio-pilot-external"]
+        args: ["discovery", "-v", "2", "-a", "istio-system", "--admission-service", "istio-pilot-external"]
         ports:
         - containerPort: 8080
         - containerPort: 443
@@ -1251,16 +1251,18 @@ spec:
           optional: true
 ---
 ################################
-# Istio-CA cluster-wide
+# Istio-CA single namespace
 ################################
-# Service account CA
+# This CA only issues certs/keys for the namespace it runs in.
+# For demo only. Please use istio-cluster-ca.yaml for real-world use cases.
+# Service account CA runs in.
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: istio-ca-service-account
   namespace: istio-system
 ---
-# Istio CA watching all namespaces
+# Istio CA
 apiVersion: v1
 kind: Deployment
 apiVersion: extensions/v1beta1
@@ -1281,4 +1283,10 @@ spec:
       - name: istio-ca
         image: docker.io/istio/istio-ca:0.2.7
         imagePullPolicy: IfNotPresent
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
 ---

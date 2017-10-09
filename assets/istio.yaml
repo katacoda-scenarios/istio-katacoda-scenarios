@@ -1111,6 +1111,8 @@ metadata:
     istio: ingress
 spec:
   type: LoadBalancer
+  externalIPs:
+  - $HOST_IP
   ports:
   - port: 80
 #   nodePort: 32000

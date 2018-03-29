@@ -4,18 +4,19 @@ kind: Deployment
 metadata:
   name: servicegraph
   namespace: istio-system
-  annotations:
-    sidecar.istio.io/inject: "false"
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: servicegraph
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - name: servicegraph
-        image: docker.io/istio/servicegraph:0.2.7
+        image: docker.io/istio/servicegraph:0.6.0
+        imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8088
         args:
@@ -27,7 +28,6 @@ metadata:
   name: servicegraph
   namespace: istio-system
 spec:
-  type: LoadBalancer
   externalIPs:
   - $HOST_IP
   ports:

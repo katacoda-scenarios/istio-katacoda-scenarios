@@ -306,7 +306,7 @@ spec:
           - --configDefaultNamespace=istio-system
           - --trace_zipkin_url=http://zipkin:9411/api/v1/spans
       - name: istio-proxy
-        image: docker.io/istio/proxy:0.7.1
+        image: docker.io/istio/proxy_debug:0.7.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 15004
@@ -1517,7 +1517,7 @@ spec:
         - name: config-volume
           mountPath: /etc/istio/config
       - name: istio-proxy
-        image: docker.io/istio/proxy:0.7.1
+        image: docker.io/istio/proxy_debug:0.7.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 15003
@@ -1591,7 +1591,7 @@ spec:
       serviceAccountName: istio-ingress-service-account
       containers:
       - name: istio-ingress
-        image: docker.io/istio/proxy:0.7.1
+        image: docker.io/istio/proxy_debug:0.7.1
         args:
         - proxy
         - ingress

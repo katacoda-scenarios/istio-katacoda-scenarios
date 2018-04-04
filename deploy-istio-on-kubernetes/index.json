@@ -1,0 +1,74 @@
+{
+    "id": "deploy-istio-on-kubernetes",
+    "pathwayId": "istio",
+    "pathwayTitle": "Istio",
+    "icon": "fa-istio",
+    "title": "Get Started with Istio and Kubernetes",
+    "description": "Learn how to get started with Istio Service Mesh and Kubernetes",
+    "authenticated": false,
+    "details": {
+        "steps": [
+            {
+                "title": "Launch Kubernetes Cluster",
+                "code": "set-env.sh",
+                "text": "step1.md"
+            },
+            {
+                "title": "Deploy Istio",
+                "courseData": "ensure-configured.sh",
+                "text": "step2.md"
+            },
+            {
+                "title": "Istio Architecture",
+                "text": "step2a.md"
+            },
+            {
+                "title": "Deploy Istio Metrics and Tracing",
+                "text": "step3.md"
+            },
+            {
+                "title": "Deploy Sample Application",
+                "text": "step4.md"
+            },
+            {
+                "title": "Bookinfo Architecture",
+                "text": "step5.md"
+            },
+            {
+                "title": "Control Routing",
+                "text": "step6.md"
+            },
+            {
+                "title": "Access Metrics",
+                "text": "step7.md"
+            },
+            {
+                "title": "Visualise Cluster using Weave Scope",
+                "text": "step8.md"
+            }
+        ],
+        "intro": {
+            "text": "intro.md",
+            "courseData": "courseBase.sh",
+            "credits": ""
+        },
+        "finish": {
+            "text": "finish.md"
+        }
+    },
+    "environment": {
+        "showdashboard": true,
+        "dashboard": "Dashboard",
+        "uilayout": "terminal-terminal-v1",
+        "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\u001b[m\r\n",
+        "uidependencies": [
+            "/socket.io/socket.io.js",
+            "/javascripts/term.js",
+            "/javascripts/terminal-application.js"
+        ]
+    },
+    "backend": {
+        "port": 80,
+        "dockerimage": "istio"
+    }
+}

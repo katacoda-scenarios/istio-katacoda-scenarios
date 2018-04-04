@@ -1,0 +1,44 @@
+{
+    "id": "apply-traffic-management",
+    "pathwayId": "istio",
+    "pathwayTitle": "Istio",
+    "icon": "fa-istio",
+    "title": "Apply Traffic Management",
+    "description": "",
+    "authenticated": false,
+    "details": {
+        "steps": [
+            {
+                "title": "Launch Kubernetes Cluster",
+                "code": "set-env.sh",
+                "text": "step1.md"
+            }
+        ],
+        "intro": {
+            "text": "intro.md",
+            "courseData": "courseBase.sh",
+            "credits": ""
+        },
+        "finish": {
+            "text": "finish.md"
+        }
+    },
+    "files": [
+        "app.js"
+    ],
+    "environment": {
+        "showdashboard": true,
+        "dashboard": "Dashboard",
+        "uilayout": "terminal-terminal-v1",
+        "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\u001b[m\r\n",
+        "uidependencies": [
+            "/socket.io/socket.io.js",
+            "/javascripts/term.js",
+            "/javascripts/terminal-application.js"
+        ]
+    },
+    "backend": {
+        "port": 8080,
+        "dockerimage": "kubeadm-cluster2-running"
+    }
+}

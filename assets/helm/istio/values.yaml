@@ -3,22 +3,22 @@
 global:
   proxy:
     repository: docker.io/istio/proxy
-    tag: 0.6.0
+    tag: 0.7.1
   proxyInit:
     repository: docker.io/istio/proxy_init
-    tag: 0.6.0
+    tag: 0.7.1
   sidecarInjector:
     repository: docker.io/istio/sidecar_injector
-    tag: 0.6.0
+    tag: 0.7.1
   mixer:
     repository: docker.io/istio/mixer
-    tag: 0.6.0
+    tag: 0.7.1
   pilot:
     repository: docker.io/istio/pilot
-    tag: 0.6.0
+    tag: 0.7.1
   security:
     repository: docker.io/istio/istio-ca
-    tag: 0.6.0
+    tag: 0.7.1
   # Not recommended for user to configure this. Hyperkube image to use when creating custom resources
   hyperkube:
     repository: quay.io/coreos/hyperkube
@@ -26,10 +26,10 @@ global:
   # addons
   grafana:
     repository: docker.io/istio/grafana
-    tag: 0.6.0
+    tag: 0.7.1
   servicegraph:
     repository: docker.io/istio/servicegraph
-    tag: 0.6.0
+    tag: 0.7.1
 
   # create RBAC resources
   rbacEnabled: true

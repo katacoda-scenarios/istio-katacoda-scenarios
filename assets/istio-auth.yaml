@@ -265,7 +265,7 @@ spec:
         args:
           - --configStoreURL=k8s://
           - --configDefaultNamespace=istio-system
-          - --zipkinURL=http://zipkin:9411/api/v1/spans
+          - --trace_zipkin_url=http://zipkin:9411/api/v1/spans
           - --logtostderr
           - -v
           - "2"
